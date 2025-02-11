@@ -3,7 +3,7 @@
 public class FileParser : IParser, IDisposable
 {
     private StreamReader? File;
-    FileParser(string path)
+    public FileParser(string path)
     {
         File = new StreamReader(path);
     }
@@ -18,4 +18,5 @@ public class FileParser : IParser, IDisposable
     }
 
     public string? ReadLine() => File?.ReadLine();
+    public string WriteLine(string line) => line;
 }

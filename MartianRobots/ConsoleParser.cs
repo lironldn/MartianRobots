@@ -6,4 +6,10 @@ public class ConsoleParser : IParser
     {
         return Console.ReadLine();
     }
+
+    public string WriteLine(string line)
+    {
+        Console.WriteLine(line);
+        return line;
+    }
 }
