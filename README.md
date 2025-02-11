@@ -8,16 +8,13 @@ The application reads input from a file and outputs the final position of the ro
 To run the application, simply run the executable, providing the path to the input file as an argument.
 An example AccTest.txt file is provided in the MartianRobots.AcceptanceTests folder.
 
-
-Sample input:
+Sample input (see the sample file):
 ```
 5 3                          <- the size of the grid (x, y)
-1 1 E                        <- the initial position of the first robot (x, y, direction facing)
-RFRFRFRF                     <- the instructions for the robot
-
+1 1 E                        <- the initial position of the 1st robot (x, y, direction facing - 'N'/'E'/'S'/'W')
+RFRFRFRF                     <- the instructions for the robot ('F' - forward, 'R' - right, 'L' - left)
 3 2 N                        <- 2nd robot
 FRRFLLFFRRFLL
-
 0 3 W                        <- 3rd robot etc.
 LLFFFLFLFL
 ```
