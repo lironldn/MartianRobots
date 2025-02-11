@@ -18,5 +18,16 @@ namespace MartianRobotsTests
             var map = new MartianMap<Robot>(dimX, dimY);
             map.IsInsideMap(x, y).Should().Be(expected);
         }
+
+        [TestCase(3, 5, 0, 0, 1, 0, true)]
+        [TestCase(3, 5, 0, 0, 0, 1, true)]
+        [TestCase(3, 5, 0, 0, 0, 1, true)]
+        [TestCase(3, 5, 2, 4, 2, 3, true)]
+        [TestCase(3, 5, 2, 4, 1, 4, true)]
+        public void Move(int dimX, int dimY, int fromX, int fromY, int toX, int toY, bool expected)
+        {
+            var map = new MartianMap<IRobot>(dimX, dimY);
+            map.Move(new Robot(map, fromX, fromY), toX, toY).Should().Be(expected);
+        }
     }
 }
