@@ -1,10 +1,13 @@
 # MartianRobots
 Hello and welcome to Mars! This simple console application simulates the movement of robots on a grid on Mars.
-Using the console input, you can make the robots move forward (F), turn left (L) or right (R).
+Using the input from ground control, you can make the robots move forward (F), turn left (L) or right (R).
 As Mars is a flat planet (I know right?), the robots can be lost if they fall off the grid.
-The application reads input from a file and outputs the final position of the robots - 'LOST' indicates a robot that fell of the edge.
+But not to worry, they leave a heavenly scent behind, so that other robots can keep safe.
+The application reads input from a file and outputs the final position of the robots - 'LOST' indicating a robot that fell of the edge.
 
 To run the application, simply run the executable, providing the path to the input file as an argument.
+An example AccTest.txt file is provided in the MartianRobots.AcceptanceTests folder.
+
 
 Sample input:
 ```
