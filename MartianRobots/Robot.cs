@@ -59,8 +59,5 @@ public class Robot : IRobot
         Direction = Directions[newDirectionIndex];
     }
 
-    public override string ToString()
-    {
-        throw new NotImplementedException();
-    }
+    public override string ToString() => $"{X} {Y} {Direction.Name}" + (IsLost ? " LOST" : "");
 }

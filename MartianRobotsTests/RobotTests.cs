@@ -2,6 +2,8 @@
 using MartianRobots;
 using Moq;
 
+namespace RobotTests;
+
 [TestFixture]
 public class RobotTests
 {
@@ -27,24 +29,25 @@ public class RobotTests
         robot.Direction.Name.Should().Be(expected);
     }
 
-    [TestCase(0, 0, "N")]
-    [TestCase(0, 0, "E")]
-    [TestCase(1, 1, "S")]
-    [TestCase(1, 1, "W")]
-    public void MoveInsideMapSucceeds(int x, int y, string direction)
+    [TestCase(0, 0, "N", "0 1 N")]
+    [TestCase(0, 0, "E", "1 0 E")]
+    [TestCase(1, 1, "S", "1 0 S")]
+    [TestCase(1, 1, "W", "0 1 W")]
+    public void MoveInsideMapSucceeds(int x, int y, string direction, string newLoc)
     {
         var map = new Mock<IMartianMap<IRobot>>();
         map.Setup(m => m.IsInsideMap(It.IsAny<int>(), It.IsAny<int>())).Returns(true);
         map.Setup(m => m.Move(It.IsAny<IRobot>(), It.IsAny<int>(), It.IsAny<int>())).Returns(true);
         Robot robot = new Robot(map.Object, x, y, direction);
         robot.MoveForward(map.Object).Should().BeTrue();
+        robot.ToString().Should().Be(newLoc);
     }
 
-    [TestCase(0, 0, "N")]
-    [TestCase(0, 0, "E")]
-    [TestCase(1, 1, "S")]
-    [TestCase(1, 1, "W")]
-    public void MoveOutsideMapRobotIsLost(int x, int y, string direction)
+    [TestCase(0, 0, "N", "0 0 N LOST")]
+    [TestCase(0, 0, "E", "0 0 E LOST")]
+    [TestCase(1, 1, "S", "1 1 S LOST")]
+    [TestCase(1, 1, "W", "1 1 W LOST")]
+    public void MoveOutsideMapRobotIsLost(int x, int y, string direction, string newLoc)
     {
         var map = new Mock<IMartianMap<IRobot>>();
         map.Setup(m => m.IsInsideMap(It.IsAny<int>(), It.IsAny<int>())).Returns(false);
@@ -53,13 +56,14 @@ public class RobotTests
         Robot robot = new Robot(map.Object, x, y, direction);
         robot.MoveForward(map.Object).Should().BeFalse();
         robot.IsLost.Should().BeTrue();
+        robot.ToString().Should().Be(newLoc);
     }
 
-    [TestCase(0, 0, "N")]
-    [TestCase(0, 0, "E")]
-    [TestCase(1, 1, "S")]
-    [TestCase(1, 1, "W")]
-    public void MoveOutsideMapWithScentRobotStaysPut(int x, int y, string direction)
+    [TestCase(0, 0, "N", "0 0 N")]
+    [TestCase(0, 0, "E", "0 0 E")]
+    [TestCase(1, 1, "S", "1 1 S")]
+    [TestCase(1, 1, "W", "1 1 W")]
+    public void MoveOutsideMapWithScentRobotStaysPut(int x, int y, string direction, string newLoc)
     {
         var map = new Mock<IMartianMap<IRobot>>();
         map.Setup(m => m.IsInsideMap(It.IsAny<int>(), It.IsAny<int>())).Returns(false);
@@ -68,5 +72,6 @@ public class RobotTests
         Robot robot = new Robot(map.Object, x, y, direction);
         robot.MoveForward(map.Object).Should().BeFalse();
         robot.IsLost.Should().BeFalse();
+        robot.ToString().Should().Be(newLoc);
     }
 }
