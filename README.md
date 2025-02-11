@@ -28,3 +28,6 @@ Sample output:
 3 3 N LOST
 2 3 S
 ```
+
+# MartianRobots - The Making Of
+This project was created using .NET Core 3.1 and C#.

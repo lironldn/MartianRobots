@@ -1,4 +1,6 @@
-﻿namespace MartianRobots;
+﻿using MartianRobots.Interfaces;
+
+namespace MartianRobots;
 
 public class Robot : IRobot
 {

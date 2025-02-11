@@ -1,4 +1,4 @@
-﻿namespace MartianRobots;
+﻿namespace MartianRobots.IO;
 
 public interface IWriter
 {

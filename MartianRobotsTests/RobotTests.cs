@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using MartianRobots;
+using MartianRobots.Interfaces;
 using Moq;
 
 namespace RobotTests;

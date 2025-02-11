@@ -1,4 +1,7 @@
-﻿namespace MartianRobots;
+﻿using MartianRobots.Interfaces;
+using MartianRobots.IO;
+
+namespace MartianRobots;
 
 public class MartianRobotsRunner
 {

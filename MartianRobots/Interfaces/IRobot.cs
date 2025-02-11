@@ -1,4 +1,4 @@
-﻿namespace MartianRobots;
+﻿namespace MartianRobots.Interfaces;
 
 public interface IRobot
 {
