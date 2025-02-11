@@ -2,5 +2,5 @@
 
 public interface IParser
 {
-    string ReadLine();
+    string? ReadLine();
 }

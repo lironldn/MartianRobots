@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartianRobots", "MartianRobots\MartianRobots.csproj", "{361D5E83-0878-4407-B352-9DF6B72A419A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartianRobotsTests", "MartianRobotsTests\MartianRobotsTests.csproj", "{3E904945-C1F8-4B66-A908-04EEDA1CC15F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartianRobots.UnitTests", "MartianRobotsTests\MartianRobots.UnitTests.csproj", "{3E904945-C1F8-4B66-A908-04EEDA1CC15F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{854D5C38-3181-4106-88C9-7B34E6D0F589}"
 	ProjectSection(SolutionItems) = preProject
