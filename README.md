@@ -52,7 +52,7 @@ The commit history shows the TDD approach used to develop the project.
 
 A parser and writer are used for I/O, to allow the application to be easily extended to read from other sources, such as a web service or a database.
 
-Co-pilot helped accelarate the coding, at times I found it annoying (when it would not let me type LIKE RIGHT NOW! or when it sometimes got it wrong), but overall it was a good experience. I would use it again. 
+Co-pilot helped accelarate the coding (the design and implementation are entirely my ideas, it just helped do the boilerplating coding), at times I found it annoying when it would not let me type LIKE RIGHT NOW... ;) or when it sometimes got it wrong; but overall it was a good experience. I would use it again. 
 
 Hope you find this project interesting and fun! :)
 Liron
