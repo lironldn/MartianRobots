@@ -2,12 +2,14 @@
 
 public class MartianRobotsRunner
 {
-    public MartianRobotsRunner(IParser parser)
+    public MartianRobotsRunner(IParser parser, IWriter writer)
     {
         Parser = parser;
+        Writer = writer;
     }
 
     public IParser Parser { get; }
+    public IWriter Writer { get; }
 
     public void Run()
     {
@@ -63,13 +65,10 @@ public class MartianRobotsRunner
                 }
             }
         }
-    }
 
-    private void PrintRobots(IEnumerable<IRobot> robots)
-    {
         foreach (var robot in robots)
         {
-            Parser.WriteLine(robot.ToString() ?? "");
+            Writer.WriteLine(robot.ToString() ?? "");
         }
     }
 }

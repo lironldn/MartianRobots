@@ -18,5 +18,4 @@ public class FileParser : IParser, IDisposable
     }
 
     public string? ReadLine() => File?.ReadLine();
-    public string WriteLine(string line) => line;
 }

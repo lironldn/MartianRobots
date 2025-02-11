@@ -74,4 +74,18 @@ public class RobotTests
         robot.IsLost.Should().BeFalse();
         robot.ToString().Should().Be(newLoc);
     }
+
+    [Test]
+    public void LostRobotStaysPut()
+    {
+        var map = new Mock<IMartianMap<IRobot>>();
+        map.Setup(m => m.IsInsideMap(It.IsAny<int>(), It.IsAny<int>())).Returns(false);
+        map.Setup(m => m.HeavenScent(It.IsAny<int>(), It.IsAny<int>())).Returns(false);
+        map.Setup(m => m.Move(It.IsAny<IRobot>(), It.IsAny<int>(), It.IsAny<int>())).Returns(false);
+        Robot robot = new Robot(map.Object, 0, 0, "N");
+        robot.MoveForward(map.Object).Should().BeFalse();
+        robot.IsLost.Should().BeTrue();
+        robot.ToString().Should().Be("0 0 N LOST");
+        robot.MoveForward(map.Object).Should().BeFalse();
+    }
 }

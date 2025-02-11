@@ -1,2 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+using MartianRobots;
+
+var runner = new MartianRobotsRunner(new ConsoleParser(), new ConsoleWriter());
+runner.Run();

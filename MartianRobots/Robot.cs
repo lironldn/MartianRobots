@@ -27,6 +27,8 @@ public class Robot : IRobot
 
     public bool MoveForward(IMartianMap<IRobot> map)
     {
+        if (IsLost) return false;
+
         var newX = X + Direction.XDiff;
         var newY = Y + Direction.YDiff;
         if (map.IsInsideMap(newX, newY))
