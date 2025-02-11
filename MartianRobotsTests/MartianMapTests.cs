@@ -27,7 +27,7 @@ namespace MartianRobotsTests
         public void Move(int dimX, int dimY, int fromX, int fromY, int toX, int toY, bool expected)
         {
             var map = new MartianMap<IRobot>(dimX, dimY);
-            map.Move(new Robot(map, fromX, fromY), toX, toY).Should().Be(expected);
+            map.Move(new Robot(map, fromX, fromY, "N"), toX, toY).Should().Be(expected);
         }
     }
 }

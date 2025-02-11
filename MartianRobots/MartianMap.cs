@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MartianRobots;
 
-public class MartianMap<T> where T : IRobot
+public class MartianMap<T> : IMartianMap<T> where T : IRobot
 {
     private int xDim;
     private int yDim;
