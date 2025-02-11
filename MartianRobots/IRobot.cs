@@ -6,7 +6,7 @@ public interface IRobot
     int X { get; }
     int Y { get; }
     bool IsLost { get; }
-    bool MoveForward(MartianMap<IRobot> map);
+    bool MoveForward(IMartianMap<IRobot> map);
     void TurnLeft();
     void TurnRight();
 }

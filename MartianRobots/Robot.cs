@@ -15,7 +15,7 @@ public class Robot : IRobot
     public int X { get; private set; }
     public int Y { get; private set; }
     public Direction Direction { get; private set; }
-    public bool IsLost { get; } = false;
+    public bool IsLost { get; private set; } = false;
 
     public Robot(IMartianMap<IRobot> map, int x, int y, string direction)
     {
@@ -25,9 +25,24 @@ public class Robot : IRobot
         map.Add(this);
     }
 
-    public bool MoveForward(MartianMap<IRobot> map)
+    public bool MoveForward(IMartianMap<IRobot> map)
     {
-        throw new NotImplementedException();
+        var newX = X + Direction.XDiff;
+        var newY = Y + Direction.YDiff;
+        if (map.IsInsideMap(newX, newY))
+        {
+            map.Move(this, newX, newY);
+            X = newX;
+            Y = newY;
+            return true;
+        }
+        if (map.HeavenScent(X, Y))
+        {
+            return false;
+        }
+
+        IsLost = true;
+        return false;
     }
 
     public void TurnLeft()

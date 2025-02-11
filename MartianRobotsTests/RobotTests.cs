@@ -26,4 +26,47 @@ public class RobotTests
         robot.TurnRight();
         robot.Direction.Name.Should().Be(expected);
     }
+
+    [TestCase(0, 0, "N")]
+    [TestCase(0, 0, "E")]
+    [TestCase(1, 1, "S")]
+    [TestCase(1, 1, "W")]
+    public void MoveInsideMapSucceeds(int x, int y, string direction)
+    {
+        var map = new Mock<IMartianMap<IRobot>>();
+        map.Setup(m => m.IsInsideMap(It.IsAny<int>(), It.IsAny<int>())).Returns(true);
+        map.Setup(m => m.Move(It.IsAny<IRobot>(), It.IsAny<int>(), It.IsAny<int>())).Returns(true);
+        Robot robot = new Robot(map.Object, x, y, direction);
+        robot.MoveForward(map.Object).Should().BeTrue();
+    }
+
+    [TestCase(0, 0, "N")]
+    [TestCase(0, 0, "E")]
+    [TestCase(1, 1, "S")]
+    [TestCase(1, 1, "W")]
+    public void MoveOutsideMapRobotIsLost(int x, int y, string direction)
+    {
+        var map = new Mock<IMartianMap<IRobot>>();
+        map.Setup(m => m.IsInsideMap(It.IsAny<int>(), It.IsAny<int>())).Returns(false);
+        map.Setup(m => m.HeavenScent(It.IsAny<int>(), It.IsAny<int>())).Returns(false);
+        map.Setup(m => m.Move(It.IsAny<IRobot>(), It.IsAny<int>(), It.IsAny<int>())).Returns(false);
+        Robot robot = new Robot(map.Object, x, y, direction);
+        robot.MoveForward(map.Object).Should().BeFalse();
+        robot.IsLost.Should().BeTrue();
+    }
+
+    [TestCase(0, 0, "N")]
+    [TestCase(0, 0, "E")]
+    [TestCase(1, 1, "S")]
+    [TestCase(1, 1, "W")]
+    public void MoveOutsideMapWithScentRobotStaysPut(int x, int y, string direction)
+    {
+        var map = new Mock<IMartianMap<IRobot>>();
+        map.Setup(m => m.IsInsideMap(It.IsAny<int>(), It.IsAny<int>())).Returns(false);
+        map.Setup(m => m.HeavenScent(It.IsAny<int>(), It.IsAny<int>())).Returns(true);
+        map.Setup(m => m.Move(It.IsAny<IRobot>(), It.IsAny<int>(), It.IsAny<int>())).Returns(false);
+        Robot robot = new Robot(map.Object, x, y, direction);
+        robot.MoveForward(map.Object).Should().BeFalse();
+        robot.IsLost.Should().BeFalse();
+    }
 }

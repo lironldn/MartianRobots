@@ -37,6 +37,11 @@ public class MartianMap<T> : IMartianMap<T> where T : IRobot
         return x >= 0 && x < xDim && y >= 0 && y < yDim;
     }
 
+    public bool HeavenScent(int x, int y)
+    {
+        return map[x, y].Any(x => x.IsLost);
+    }
+
     public bool Move(T robot, int toX, int toY)
     {
         if (IsInsideMap(toX, toY))
@@ -49,8 +54,6 @@ public class MartianMap<T> : IMartianMap<T> where T : IRobot
             map[toX, toY].Add(robot);
             return true;
         }
-
-        // TODO: handle falling off the map
 
         return false;
     }
