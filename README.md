@@ -5,12 +5,15 @@ As Mars is a flat planet (I know right?), the robots can be lost if they fall of
 But not to worry, they leave a heavenly scent behind, so that other robots can keep safe.
 The application reads input from a file and outputs the final position of the robots - 'LOST' indicating a robot that fell of the edge.
 
-To run the application, simply run the executable, providing the path to the input file as an argument.
+To build the application, clone the repository, open the solution in Visual Studio and build the solution.
+The application will be built in the MartianRobots\bin\Debug\net8.0 folder (or Release).
+
+To run the application, simply run the executable (MartianRobots.exe), providing the path to an input file as an argument.
 An example AccTest.txt file is provided in the MartianRobots.AcceptanceTests folder.
 
 Sample input (see the sample file):
 ```
-5 3                          <- the size of the grid (x, y)
+5 3                          <- the top-right corner of the grid (x, y) - the resulting grid will be of size x+1, y+1
 1 1 E                        <- the initial position of the 1st robot (x, y, direction facing - 'N'/'E'/'S'/'W')
 RFRFRFRF                     <- the instructions for the robot ('F' - forward, 'R' - right, 'L' - left)
 3 2 N                        <- 2nd robot
