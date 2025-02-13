@@ -61,7 +61,7 @@ public class MartianRobotsRunner
                         robot.TurnRight();
                         break;
                     case "F":
-                        robot.MoveForward(map);
+                        robot.MoveForward();
                         break;
                     default:
                         throw new InvalidOperationException("Invalid instruction");
