@@ -2,14 +2,14 @@
 
 public class Direction
 {
-    public string Name { get; }
-    public int XDiff { get; }
-    public int YDiff { get; }
+    public string Name { get; } // this will be 'N', 'E', 'S', or 'W'
+    public int XDelta { get; }
+    public int YDelta { get; }
 
-    public Direction(string name, int xDiff, int yDiff)
+    public Direction(string name, int xDelta, int yDelta)
     {
         this.Name = name;
-        this.XDiff = xDiff;
-        this.YDiff = yDiff;
+        this.XDelta = xDelta;
+        this.YDelta = yDelta;
     }
 }

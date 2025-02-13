@@ -5,13 +5,15 @@ namespace MartianRobots;
 public class Robot : IRobot
 {
 
-    private static readonly List<Direction> Directions = new List<Direction>
-    {
-        new Direction("N", 0, 1),
-        new Direction("E", 1, 0),
-        new Direction("S", 0, -1),
-        new Direction("W", -1, 0)
-    };
+    private static readonly List<Direction> Directions =
+    [
+        new("N", 0, 1),
+        new("E", 1, 0),
+        new("S", 0, -1),
+        new("W", -1, 0)
+    ];
+
+    private readonly IMartianMap<IRobot> map;
 
     private readonly IMartianMap<IRobot> map;
 
@@ -34,8 +36,8 @@ public class Robot : IRobot
     {
         if (IsLost) return false;
 
-        var newX = X + Direction.XDiff;
-        var newY = Y + Direction.YDiff;
+        var newX = X + Direction.XDelta;
+        var newY = Y + Direction.YDelta;
         if (map.IsInsideMap(newX, newY))
         {
             map.Move(this, newX, newY);

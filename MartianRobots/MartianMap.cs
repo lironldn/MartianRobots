@@ -9,15 +9,15 @@ namespace MartianRobots;
 
 public class MartianMap<T> : IMartianMap<T> where T : IRobot
 {
-    private int xDim;
-    private int yDim;
+    private int xDimension;
+    private int yDimension;
     private IList<T>[,] map;
 
-    public MartianMap(int xDim, int yDim)
+    public MartianMap(int xDimension, int yDimension)
     {
-        this.xDim = xDim;
-        this.yDim = yDim;
-        map = new List<T>[xDim, yDim];
+        this.xDimension = xDimension;
+        this.yDimension = yDimension;
+        map = new List<T>[xDimension, yDimension];
     }
 
     public void Add(T item)
@@ -28,20 +28,17 @@ public class MartianMap<T> : IMartianMap<T> where T : IRobot
         }
         if (map[item.X, item.Y] == null)
         {
-            map[item.X, item.Y] = new List<T>();
+            map[item.X, item.Y] = [];
         }
         map[item.X, item.Y].Add(item);
     }
 
     public bool IsInsideMap(int x, int y)
     {
-        return x >= 0 && x < xDim && y >= 0 && y < yDim;
+        return x >= 0 && x < xDimension && y >= 0 && y < yDimension;
     }
 
-    public bool HeavenScent(int x, int y)
-    {
-        return map[x, y].Any(x => x.IsLost);
-    }
+    public bool HeavenScent(int x, int y) => map[x, y].Any(x => x.IsLost);
 
     public bool Move(T robot, int toX, int toY)
     {
@@ -50,7 +47,7 @@ public class MartianMap<T> : IMartianMap<T> where T : IRobot
             map[robot.X, robot.Y].Remove(robot);
             if (map[toX, toY] == null)
             {
-                map[toX, toY] = new List<T>();
+                map[toX, toY] = [];
             }
             map[toX, toY].Add(robot);
             return true;
