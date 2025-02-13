@@ -40,7 +40,7 @@ public class RobotTests
         map.Setup(m => m.IsInsideMap(It.IsAny<int>(), It.IsAny<int>())).Returns(true);
         map.Setup(m => m.Move(It.IsAny<IRobot>(), It.IsAny<int>(), It.IsAny<int>())).Returns(true);
         Robot robot = new Robot(map.Object, x, y, direction);
-        robot.MoveForward(map.Object).Should().BeTrue();
+        robot.MoveForward().Should().BeTrue();
         robot.ToString().Should().Be(newLoc);
     }
 
@@ -55,7 +55,7 @@ public class RobotTests
         map.Setup(m => m.HeavenScent(It.IsAny<int>(), It.IsAny<int>())).Returns(false);
         map.Setup(m => m.Move(It.IsAny<IRobot>(), It.IsAny<int>(), It.IsAny<int>())).Returns(false);
         Robot robot = new Robot(map.Object, x, y, direction);
-        robot.MoveForward(map.Object).Should().BeFalse();
+        robot.MoveForward().Should().BeFalse();
         robot.IsLost.Should().BeTrue();
         robot.ToString().Should().Be(newLoc);
     }
@@ -71,7 +71,7 @@ public class RobotTests
         map.Setup(m => m.HeavenScent(It.IsAny<int>(), It.IsAny<int>())).Returns(true);
         map.Setup(m => m.Move(It.IsAny<IRobot>(), It.IsAny<int>(), It.IsAny<int>())).Returns(false);
         Robot robot = new Robot(map.Object, x, y, direction);
-        robot.MoveForward(map.Object).Should().BeFalse();
+        robot.MoveForward().Should().BeFalse();
         robot.IsLost.Should().BeFalse();
         robot.ToString().Should().Be(newLoc);
     }
@@ -84,9 +84,9 @@ public class RobotTests
         map.Setup(m => m.HeavenScent(It.IsAny<int>(), It.IsAny<int>())).Returns(false);
         map.Setup(m => m.Move(It.IsAny<IRobot>(), It.IsAny<int>(), It.IsAny<int>())).Returns(false);
         Robot robot = new Robot(map.Object, 0, 0, "N");
-        robot.MoveForward(map.Object).Should().BeFalse();
+        robot.MoveForward().Should().BeFalse();
         robot.IsLost.Should().BeTrue();
         robot.ToString().Should().Be("0 0 N LOST");
-        robot.MoveForward(map.Object).Should().BeFalse();
+        robot.MoveForward().Should().BeFalse();
     }
 }

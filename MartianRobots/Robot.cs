@@ -13,6 +13,8 @@ public class Robot : IRobot
         new Direction("W", -1, 0)
     };
 
+    private readonly IMartianMap<IRobot> map;
+
     public Guid Id { get; } = Guid.NewGuid();
     public int X { get; private set; }
     public int Y { get; private set; }
@@ -21,13 +23,14 @@ public class Robot : IRobot
 
     public Robot(IMartianMap<IRobot> map, int x, int y, string direction)
     {
+        this.map = map;
         X = x;
         Y = y;
         Direction = Directions.First(d => d.Name == direction);
         map.Add(this);
     }
 
-    public bool MoveForward(IMartianMap<IRobot> map)
+    public bool MoveForward()
     {
         if (IsLost) return false;
 
