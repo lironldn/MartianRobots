@@ -14,14 +14,12 @@ public class Robot : IRobot
     ];
 
     private readonly IMartianMap<IRobot> map;
-
-    private readonly IMartianMap<IRobot> map;
-
+    
     public Guid Id { get; } = Guid.NewGuid();
     public int X { get; private set; }
     public int Y { get; private set; }
     public Direction Direction { get; private set; }
-    public bool IsLost { get; private set; } = false;
+    public bool IsLost { get; private set; }
 
     public Robot(IMartianMap<IRobot> map, int x, int y, string direction)
     {

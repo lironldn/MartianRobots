@@ -9,7 +9,7 @@ public class AccTests
     [Test]
     public void RobotsOnMars()
     {
-        var parser = new FileParser(".\\AccTest.txt");
+        var parser = new FileParser("./AccTest.txt");
         var writer = Mock.Of<IWriter>();
         var sut = new MartianRobotsRunner(parser, writer);
         sut.Run();
