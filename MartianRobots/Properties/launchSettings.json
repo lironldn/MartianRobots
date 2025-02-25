@@ -2,7 +2,7 @@
   "profiles": {
     "MartianRobots": {
       "commandName": "Project",
-      "commandLineArgs": "..\\..\\..\\..\\MartianRobots.AcceptanceTests\\AccTest.txt"
+      "commandLineArgs": "../../../../MartianRobots.AcceptanceTests/AccTest.txt"
     }
   }
 }
