@@ -1,6 +1,6 @@
 namespace MartianRobots.AcceptanceTests;
 using MartianRobots;
-using MartianRobots.IO;
+using IO;
 using Moq;
 
 [TestFixture]
